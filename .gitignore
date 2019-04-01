@@ -1,0 +1,3 @@
+/node_modules
+# Uncomment on deploy mode
+#.env

@@ -1,0 +1,27 @@
+{
+  "name": "boilerplate-app",
+  "version": "1.0.0",
+  "description": "Boilerplate App for building MERN Stack Apps with GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js | cd frontend && npm start",
+    "start:local": "nodemon -r dotenv/config index.js"
+  },
+  "keywords": [],
+  "author": "Andre Quiroz Soriano <wesloker.aqs@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "express": "^4.16.4",
+    "express-graphql": "^0.7.1",
+    "graphql": "^14.2.0",
+    "mongoose": "^5.4.20"
+  },
+  "devDependencies": {
+    "dotenv": "^7.0.0",
+    "nodemon": "^1.18.10"
+  }
+}
