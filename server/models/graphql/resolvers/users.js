@@ -2,14 +2,14 @@
 const bcrypt = require('bcryptjs');
 // Users Resolver
 module.exports = {
-  async createdNotes(parent, args, { loaders }) {
+  async createdNotes(parent, _args, { loaders }) {
     try {
       return loaders.notesLoader.loadMany(parent.createdNotes);
     } catch (err) {
       throw new Error(err);
     }
   },
-  async user(parent, args, { models }) {
+  async user(_parent, args, { models }) {
     try {
       let dataType = Object.keys(args)[0];
       dataType = dataType === 'id' ? '_'.concat(dataType) : dataType;
@@ -25,7 +25,7 @@ module.exports = {
       throw new Error(err);
     }
   },
-  async users(parent, args, { models }) {
+  async users(_parent, _args, { models }) {
     try {
       const users = await models.User.find();
       users.map((user) => {
@@ -37,7 +37,7 @@ module.exports = {
       throw new Error(err);
     }
   },
-  async createUser(parent, { input }, { models }) {
+  async createUser(_parent, { input }, { models }) {
     try {
       const hashedPassword = await bcrypt.hash(input.password, 12);
       input.password = hashedPassword;
@@ -52,7 +52,7 @@ module.exports = {
       throw new Error('User not saved.');
     }
   },
-  async updateUser(parent, args, { models }) {
+  async updateUser(_parent, args, { models }) {
     try {
       const { id: _id } = args;
       delete args.id;
