@@ -1,37 +1,33 @@
 // Dependencies
 const express = require('express');
-const helmet = require('helmet');
-const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
+const bodyParser = require('body-parser');
+const helmet = require('helmet');
+// Import GraphQL Schema
 const graphQlSchema = require('./models/graphql/index');
 // API
 const router = require('./api/index');
-// Middlewares
-// const isAuth = require('./middlewares/auth')
 // Loaders
 const { usersDataLoader, notesDataLoader } = require('./loaders/index');
-// Models
-const models = require('./models/schemas/index');
-
+// Middlewares
+// const isAuth = require('./middlewares/auth')
 // Export Server
-module.exports = (port, nodeEnv, graphQLEndpoint) => {
+module.exports = (port, nodeEnv, models, graphQLEndpoint) => {
   // Setting Server
   const app = express();
   app
     .set('port', port)
     .use(helmet())
     .use(bodyParser.json())
-    .use(
-      bodyParser.urlencoded({
-        extended: true,
-      }),
-    )
-    /* .use(isAuth) */
-    // Bind Express with GraphQL
+    .use(bodyParser.urlencoded({
+      extended: true,
+    }))
+    // .use(isAuth)
     .use(
       graphQLEndpoint,
       graphqlHttp({
         schema: graphQlSchema,
+        graphiql: nodeEnv === 'dev',
         context: {
           models,
           loaders: {
@@ -39,11 +35,11 @@ module.exports = (port, nodeEnv, graphQLEndpoint) => {
             notesLoader: notesDataLoader(),
           },
         },
-        graphiql: nodeEnv === 'dev',
       }),
     );
   // Setting Server Routers
   router(app);
+  // Start Server
   app.listen(app.get('port'), () => {
     // eslint-disable-next-line no-console
     console.log('Running application...');

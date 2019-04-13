@@ -6,5 +6,7 @@ const schema = require('./graphql/index');
 module.exports = (query, cb, variableValues) => {
   graphql(schema, query, null, null, variableValues)
     .then(res => cb(res))
-    .catch(err => console.log(err));
+    .catch((err) => {
+      throw new Error(err);
+    });
 };

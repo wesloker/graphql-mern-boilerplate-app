@@ -1,11 +1,10 @@
-// Mongoose
+// Mongo
 const mongoose = require('mongoose');
 // Export Database
 module.exports = async (DBName, debug) => {
-  // Database connection
+  // Database Connection
   await mongoose
-    // Can Be Connection String Or Template String Connection
-    .connect('mongodb://localhost:27017/', {
+    .connect('mongodb://localhost:27017', {
       useCreateIndex: true,
       useNewUrlParser: true,
       useFindAndModify: false,
@@ -16,6 +15,6 @@ module.exports = async (DBName, debug) => {
         mongoose.set('debug', true);
       }
       // eslint-disable-next-line no-console
-      console.log('Database Connected...');
+      console.log('Connected Database...');
     });
 };

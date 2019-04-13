@@ -1,9 +1,16 @@
 # Dependency directories
 node_modules/
 
-# VSCode files
-.vscode
-
 # dotenv environment variables file
-# .env
-# .env.test
+.env
+.env.test
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Travis
+.travis.yml

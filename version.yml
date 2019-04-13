@@ -5,15 +5,15 @@ project:
   createdAt: 01-04-19
   license: MIT
   homepage:
-    demo:
+    demo: coming-soon*
   repository:
-    url: https://github.com/wesloker/graphql-mern-boilerplate-app
+    url: https://github.com/wesloker/graphql-mern-boilerplate-ap
   author:
     name: Andre Quiroz Soriano
     email: wesloker.aqs@gmail.com
     url:
       github: https://github.com/wesloker
-  collaborators: [
+  contributors: [
     {
       name: ,
       email: ,
