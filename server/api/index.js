@@ -1,6 +1,7 @@
+// Import App Routers
 const userRouter = require('./user.router');
 const noteRouter = require('./note.router');
-// Binding Routers With The Server
+
 module.exports = (app) => {
   app
     // User Router
