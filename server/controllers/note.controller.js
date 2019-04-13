@@ -1,6 +1,5 @@
-// To Execute GraphQL Queries
 const executeQuery = require('../models/execute-query');
-// Creating And Exporting Note Controller
+
 module.exports = class NoteController {
   constructor() {
     this.callback = function json(res) {
@@ -9,37 +8,34 @@ module.exports = class NoteController {
   }
 
   static getNote(req, res) {
-    const { query, variables } = req.body;
-    executeQuery(
-      query, this.callback(res),
+    const {
+      query,
       variables,
-    );
+    } = req.body;
+    executeQuery(query, this.callback(res), variables);
   }
 
   static getNotes(req, res) {
-    const { query, variables } = req.body;
-    executeQuery(
+    const {
       query,
-      this.callback(res),
       variables,
-    );
+    } = req.body;
+    executeQuery(query, this.callback(res), variables);
   }
 
-  static newNote(req, res) {
-    const { query, variables } = req.body;
-    executeQuery(
+  static createNote(req, res) {
+    const {
       query,
-      this.callback(res),
       variables,
-    );
+    } = req.body;
+    executeQuery(query, this.callback(res), variables);
   }
 
   static updateNote(req, res) {
-    const { query, variables } = req.body;
-    executeQuery(
+    const {
       query,
-      this.callback(res),
       variables,
-    );
+    } = req.body;
+    executeQuery(query, this.callback(res), variables);
   }
 };
