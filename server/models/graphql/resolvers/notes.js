@@ -37,17 +37,13 @@ module.exports = {
       });
       await note.save();
       await models.User.findOneAndUpdate(
-        {
-          _id: input.creator,
-        },
+        { _id: input.creator },
         {
           $push: {
             createdNotes: note._doc._id,
           },
         },
-        {
-          new: true,
-        },
+        { new: true },
       );
       return note;
     } catch (err) {
@@ -61,15 +57,7 @@ module.exports = {
       const date = new Date().toDateString();
       Object.assign(args, date);
       const note = await models.Note.findOneAndUpdate(
-        {
-          _id,
-        },
-        {
-          ...args,
-        },
-        {
-          new: true,
-        },
+        { _id }, { ...args }, { new: true },
       );
       return note;
     } catch (err) {

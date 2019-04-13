@@ -57,15 +57,9 @@ module.exports = {
       const { id: _id } = args;
       delete args.id;
       const user = await models.User.findOneAndUpdate(
-        {
-          _id,
-        },
-        {
-          ...args,
-        },
-        {
-          new: true,
-        },
+        { _id },
+        { ...args },
+        { new: true },
       );
       return user;
     } catch (err) {
