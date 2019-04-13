@@ -8,7 +8,7 @@ install:
 
 script:
   - npm test
-  - npm run build
+  - npm run start:local
 
 deploy:
   provider: pages
