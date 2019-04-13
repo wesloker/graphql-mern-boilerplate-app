@@ -1,8 +1,6 @@
-const { deleteProp } = require('../../../utils/index');
-
 // Notes Resolver
 module.exports = {
-  async creator(parent, args, { loaders }) {
+  async creator(parent, _args, { loaders }) {
     try {
       return loaders.usersLoader.load(parent.creator.toString());
     } catch (err) {
@@ -22,7 +20,7 @@ module.exports = {
       throw new Error(err);
     }
   },
-  async notes(parent, args, { models }) {
+  async notes(_parent, _args, { models }) {
     try {
       const notes = await models.Note.find();
       return notes;
@@ -30,7 +28,7 @@ module.exports = {
       throw new Error(err);
     }
   },
-  async createNote(parent, { input }, { models }) {
+  async createNote(_parent, { input }, { models }) {
     try {
       const date = new Date().toDateString();
       Object.assign(input, date);
@@ -56,11 +54,9 @@ module.exports = {
       throw new Error(err);
     }
   },
-  async updateNote(parent, args, { models }) {
+  async updateNote(_parent, args, { models }) {
     try {
       const { id: _id } = args;
-      // Revisar la funcion
-      /* Object.seal(obj) */
       delete args.id;
       const date = new Date().toDateString();
       Object.assign(args, date);
