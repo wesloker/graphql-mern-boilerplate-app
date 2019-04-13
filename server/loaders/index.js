@@ -7,7 +7,7 @@ const { User, Note } = require('../models/schemas/index');
 // Batch Functions
 async function batchUsersFn(keys) {
   try {
-    await unique(keys);
+    unique(keys);
     const users = await User.find({
       _id: {
         $in: keys,
@@ -15,7 +15,6 @@ async function batchUsersFn(keys) {
     });
     const sortedArr = sortBy(keys, users);
     const mappedArr = sortedArr.map(user => ({
-      // eslint-disable-next-line no-underscore-dangle
       ...user._doc,
       password: null,
     }));
@@ -34,7 +33,6 @@ async function batchNotesFn(keys) {
     });
     const sortedArr = sortBy(keys, notes);
     const mappedArr = sortedArr.map(note => ({
-      // eslint-disable-next-line no-underscore-dangle
       ...note._doc,
     }));
     return mappedArr;
