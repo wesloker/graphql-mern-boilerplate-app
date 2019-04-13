@@ -1,14 +1,14 @@
 // Express Router
 const router = require('express').Router();
-// Controllers
+// Note Controller
 const nc = require('../controllers/note.controller');
-// Set And Export Router
+
 module.exports = router
   // Find One Note On Database
-  .post('/note', nc.getNote)
+  .post('/get-note', nc.getNote)
   // Find All Notes On Database
-  .post('/notes', nc.getNotes)
+  .post('/get-notes', nc.getNotes)
   // Create New Note On Database
-  .post('/note/new', nc.newNote)
-  // Update One Note On Database
+  .post('/note/new', nc.createNote)
+  // Update Note On Database
   .post('/note/update', nc.updateNote);
