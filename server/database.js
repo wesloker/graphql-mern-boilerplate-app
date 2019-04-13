@@ -1,15 +1,21 @@
-// Mongo connect middleware
-const mongoose = require('mongoose')
-// Exporting database
-module.exports = (DBName) => {
+// Mongoose
+const mongoose = require('mongoose');
+// Export Database
+module.exports = async (DBName, debug) => {
   // Database connection
-  return mongoose
-    .connect(`mongodb://localhost/${DBName}`, {
+  await mongoose
+    // Can Be Connection String Or Template String Connection
+    .connect('mongodb://localhost:27017/', {
       useCreateIndex: true,
       useNewUrlParser: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      dbName: DBName,
     })
     .then(() => {
-      console.log('Connected Database...')
-    })
-}
+      if (Boolean().valueOf(debug)) {
+        mongoose.set('debug', true);
+      }
+      // eslint-disable-next-line no-console
+      console.log('Database Connected...');
+    });
+};

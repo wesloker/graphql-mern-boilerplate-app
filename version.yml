@@ -1,0 +1,21 @@
+project:
+  version: 1.0.0
+  name: boilerplate-app
+  description: MERN Stack App With GraphQL
+  createdAt: 01-04-19
+  license: MIT
+  homepage:
+    demo:
+  repository:
+    url: https://github.com/wesloker/graphql-mern-boilerplate-app
+  author:
+    name: Andre Quiroz Soriano
+    email: wesloker.aqs@gmail.com
+    url:
+      github: https://github.com/wesloker
+  collaborators: [
+    {
+      name: ,
+      email: ,
+    },
+  ]

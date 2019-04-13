@@ -1,46 +1,45 @@
-const {
-  graphql,
-  GraphQLSchema,
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLFloat,
-  GraphQLString,
-  GraphQLBoolean,
-  GraphQLID,
-  GraphQLNonNull
-} = require('graphql')
-
-const schema = require('../graphql/index')
-
+// To Execute GraphQL Queries
+const executeQuery = require('../models/execute-query');
+// Creating And Exporting Note Controller
 module.exports = class NoteController {
-  // Aquí irán las consultas. Si el archivo se vuelve más grande es recomendable separar el código en módulos
-  getNote(req, res) {
-    const func = cb => {
-      const query = `
-        query {
-          note(id: 2) {
-            name
-            id
-          }
-        }
-      `
-      graphql(schema, query)
-        .then(response => {
-          console.log(response)
-          return response
-        })
-        .then(res => cb(res))
-    }
-    func(data => {
-      res.json(data)
-    })
+  constructor() {
+    this.callback = function json(res) {
+      return res.json();
+    };
   }
 
-  getNotes() {
-
+  static getNote(req, res) {
+    const { query, variables } = req.body;
+    executeQuery(
+      query, this.callback(res),
+      variables,
+    );
   }
 
-  updateNote() {
-
+  static getNotes(req, res) {
+    const { query, variables } = req.body;
+    executeQuery(
+      query,
+      this.callback(res),
+      variables,
+    );
   }
-}
+
+  static newNote(req, res) {
+    const { query, variables } = req.body;
+    executeQuery(
+      query,
+      this.callback(res),
+      variables,
+    );
+  }
+
+  static updateNote(req, res) {
+    const { query, variables } = req.body;
+    executeQuery(
+      query,
+      this.callback(res),
+      variables,
+    );
+  }
+};

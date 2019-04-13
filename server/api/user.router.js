@@ -1,19 +1,14 @@
-const router = require('express').Router()
+// Express Router
+const router = require('express').Router();
 // Controllers
-const UserController = require('../controllers/user.controller')
-const NoteController = require('../controllers/note.controller')
-
-const uc = new UserController()
-const nc = new NoteController()
-
-router
-  // Find one user on db
-  .get('/users', (req, res) => {
-    res.send('Get all users from db')
-  })
-  // Find all users on db
-  .get('/user', (req, res) => {
-    res.send('Get only user from db')
-  })
-
+const uc = require('../controllers/user.controller');
+// Set And Export Router
 module.exports = router
+  // Find One User On Database
+  .post('/user', uc.getUser)
+  // Find All Users On Database
+  .post('/users', uc.getUsers)
+  // Create New User On Database
+  .post('/user/new', uc.createUser)
+  // Update One User On Database
+  .post('/user/update', uc.updateUser);

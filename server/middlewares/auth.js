@@ -1,5 +1,1 @@
-module.exports = (auth, next) => {
-  auth ?
-    next() :
-    'Denegate user'
-}
+module.exports = auth => (auth ? 'authed' : 'not authed');
