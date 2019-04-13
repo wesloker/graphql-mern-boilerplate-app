@@ -12,8 +12,6 @@ parserOptions:
 rules:
   no-use-before-define:
     - error
-    - {functions: false, classes: true, variables: false}
-  no-param-reassign:
-    - 2
-    - {props: false}
+    - {functions: false, classes: false, variables: false}
+  no-param-reassign: [2, {props: false}]
   no-underscore-dangle: 0
